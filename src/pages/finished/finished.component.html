@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>FINISHED</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+      <img src="../../assets/imgs/completados.jpg">
+  <ion-list>
+      <button ion-item *ngFor="let item of wishesService.list" (click)="selectList(item)">
+        {{ item.title }}
+      </button>  
+    </ion-list>
+</ion-content>
