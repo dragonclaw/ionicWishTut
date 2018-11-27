@@ -6,10 +6,21 @@ export class WishesService {
     list:FullList [] = [];
 
     constructor () {
-        const list1 = new FullList('first list');
-        const list2 = new FullList('second list');
-        this.list.push(list1,list2);
-        console.log(this.list);
-        
+        this.loadFromStorage();
+    }
+    addTaskList(list:FullList){
+        this.list.push(list);
+        this.saveOnStorage();
+    }
+
+    saveOnStorage () {
+        localStorage.setItem('data',JSON.stringify(this.list));
+        console.log("guarde");
+    }
+
+    loadFromStorage () {
+        if(localStorage.getItem('data')){
+            this.list = JSON.parse(localStorage.getItem('data'));
+        }
     }
 }

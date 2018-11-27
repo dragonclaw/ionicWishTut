@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WishesService } from '../../services/wishes.service';
 import { FullList } from '../../models';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { AddItemToListComponent } from '../addItemToList/addItemToList.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { AddItemToListComponent } from '../addItemToList/addItemToList.component
 })
 export class PendingComponent implements OnInit {
     
-    constructor(public wishesService:WishesService, private navCtrl: NavController) { 
+    constructor(public wishesService:WishesService, private navCtrl: NavController, private alertCtrl:AlertController) { 
 
     }
 
@@ -18,7 +18,36 @@ export class PendingComponent implements OnInit {
         console.log(list);
     }
     goToAddList(){
-        this.navCtrl.push(AddItemToListComponent);
+        const nAlert = this.alertCtrl.create({
+            title : 'New List',
+            message : 'Name of the new list',
+            inputs : [{
+                name:'newListTitle',
+                placeholder:'Name of the list',
+            }],
+            buttons:[{
+                text:'Cancel',
+                handler: data => {
+                    console.log(data);
+                }
+            },{
+                text:'Save',
+                handler:data => {
+                    if(data.newListTitle.length > 0){
+                        console.log(data);
+                        this.navCtrl.push(AddItemToListComponent,{
+                            title: data.newListTitle
+                        });
+                    } else {
+                        return;
+                    }      
+                }
+            }
+        ]
+        });
+
+        nAlert.present();
+        
     }
 
     ngOnInit(): void { }

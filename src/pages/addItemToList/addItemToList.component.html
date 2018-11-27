@@ -1,22 +1,30 @@
 <ion-header>
     <ion-navbar color="primary">
-      <ion-title>New List...</ion-title>
+        <ion-title>{{newList.title}}</ion-title>
     </ion-navbar>
-  </ion-header>
+</ion-header>
 <ion-content>
-<ion-list >
-  <ion-list-header>
-    Task toDo
-  </ion-list-header>
-  <ion-item>
-    <ion-label floating>Nuevo Item</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-</ion-list>
-<ion-list>
-  <button ion-item>
-    <ion-icon name="square-outline" item-start></ion-icon>
-    Save Changes
-  </button>
-</ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>New Item {{newItemTask}}</ion-label>
+            <ion-input [(ngModel)]="newItemTask" type="text" (keyup.enter)='addItem(newItemTask)'></ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="newList.items.length > 0">
+        <ion-list-header>
+            Tasks TODO
+        </ion-list-header>
+        <ion-item-sliding *ngFor="let item of newList.items; let i = index" class='animated fadeInDown'>
+            <button ion-item (click)='item.completed ? item.completed = !item.completed : item.completed = !item.completed'>
+              <ion-icon *ngIf="!item.completed" name="square-outline" item-start></ion-icon>
+              <ion-icon *ngIf="item.completed" name="checkbox-outline" item-start></ion-icon>
+              <p>{{item.description}}</p>
+            </button>
+            <ion-item-options side="right">
+                <button (click)='deleteItem(i)' icon-only ion-button color="danger">
+                <ion-icon name="close"></ion-icon>
+              </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
 </ion-content>

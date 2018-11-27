@@ -5,7 +5,6 @@ import { MyApp } from './app.component';
 
 // Components
 
-import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { PendingComponent } from '../pages/pending/pending.component';
 import { FinishedComponent } from '../pages/finished/finished.component';
@@ -22,7 +21,6 @@ import { WishesService } from '../services/wishes.service';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     TabsPage,
     PendingComponent,
     FinishedComponent,
@@ -35,7 +33,6 @@ import { WishesService } from '../services/wishes.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     TabsPage,
     PendingComponent,
     FinishedComponent,
