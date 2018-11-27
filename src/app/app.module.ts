@@ -11,10 +11,15 @@ import { FinishedComponent } from '../pages/finished/finished.component';
 import { AddItemToListComponent } from '../pages/addItemToList/addItemToList.component';
 
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 // Services
 import { WishesService } from '../services/wishes.service';
+
+//Pipes
+import { FilterCompletedTaskPipe } from '../pipes/filter-completed-task/filter-completed-task';
+import { ListComponent } from '../components/list.component';
 
 
 
@@ -24,7 +29,9 @@ import { WishesService } from '../services/wishes.service';
     TabsPage,
     PendingComponent,
     FinishedComponent,
-    AddItemToListComponent
+    AddItemToListComponent,
+    FilterCompletedTaskPipe,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +44,7 @@ import { WishesService } from '../services/wishes.service';
     PendingComponent,
     FinishedComponent,
     AddItemToListComponent,
+    ListComponent
   ],
   providers: [
     StatusBar,

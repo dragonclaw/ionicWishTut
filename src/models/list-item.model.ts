@@ -1,6 +1,6 @@
 export class ListItem {
-    description: String;
-    completed:Boolean;
+    description: string;
+    completed:boolean;
     
     constructor(desc: string) {
         this.description = desc,

@@ -15,7 +15,7 @@
             Tasks TODO
         </ion-list-header>
         <ion-item-sliding *ngFor="let item of newList.items; let i = index" class='animated fadeInDown'>
-            <button ion-item (click)='item.completed ? item.completed = !item.completed : item.completed = !item.completed'>
+            <button ion-item (click)='checkTask(item)'>
               <ion-icon *ngIf="!item.completed" name="square-outline" item-start></ion-icon>
               <ion-icon *ngIf="item.completed" name="checkbox-outline" item-start></ion-icon>
               <p>{{item.description}}</p>

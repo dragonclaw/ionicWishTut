@@ -8,8 +8,14 @@ export class WishesService {
     constructor () {
         this.loadFromStorage();
     }
-    addTaskList(list:FullList){
-        this.list.push(list);
+    addTaskList(addList:FullList){
+        this.list.push(addList);
+        this.saveOnStorage();
+    }
+    deleteTaskList(deleteList:FullList){
+        this.list = this.list.filter(data => {
+            return data.id !== deleteList.id
+        });
         this.saveOnStorage();
     }
 

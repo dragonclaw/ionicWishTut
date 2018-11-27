@@ -2,13 +2,13 @@ import { ListItem } from "./list-item.model";
 
 export class FullList {
     id: number;
-    title: String;
+    title: string;
     createdAt: Date;
     finishedAt: Date;
     finished: boolean;
     items: ListItem[];
 
-    constructor(title:String){
+    constructor(title:string){
         this.title = title;
         this.createdAt = new Date();
         this.finished = false;

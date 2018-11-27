@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WishesService } from '../../services/wishes.service';
 import { FullList } from '../../models';
 import { NavController, AlertController } from 'ionic-angular';
 import { AddItemToListComponent } from '../addItemToList/addItemToList.component';
+
 
 @Component({
     selector: 'page-pending',
@@ -10,13 +11,19 @@ import { AddItemToListComponent } from '../addItemToList/addItemToList.component
 })
 export class PendingComponent implements OnInit {
     
+    
+    
     constructor(public wishesService:WishesService, private navCtrl: NavController, private alertCtrl:AlertController) { 
 
     }
 
     selectList (list:FullList){
-        console.log(list);
+        this.navCtrl.push(AddItemToListComponent,{
+            title: list.title,
+            lista: list,
+        });
     }
+
     goToAddList(){
         const nAlert = this.alertCtrl.create({
             title : 'New List',
