@@ -1,0 +1,21 @@
+<ion-list>
+
+        <ion-item-sliding *ngFor="let task of wishesService.list | filterCompletedTask :finished " #slidingItem>
+            <button ion-item (click)="selectList(task)">
+                {{ task.title }}
+                <ion-note item-end>
+                  {{task.items.length}} items
+                </ion-note>
+              </button>
+          <ion-item-options side="left">
+            <button (click)='wishesService.deleteTaskList(task)' ion-button icon-only color='danger'>
+              <ion-icon name="close"></ion-icon>
+            </button>
+            <button (click)='editListTitle(task, slidingItem)' ion-button icon-only color='secondary'>
+                    <ion-icon name="create"></ion-icon>
+            </button>
+          </ion-item-options>
+          
+        </ion-item-sliding>
+
+</ion-list>
